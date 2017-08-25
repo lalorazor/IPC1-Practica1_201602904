@@ -11,7 +11,7 @@ public class main {
 	    int tInicial = 0;//tamanio inicial del snake
 	    int largo=0;
 	    String[][] tablero;
-	    snake serpiente[];
+	    String[] snake;
 	    int posicionX;
 	    int posicionY;
 	    int randomX,randomY;
@@ -60,7 +60,7 @@ public class main {
 	      largo=tInicial;
 	      
 	      
-	      serpiente=new snake[200];
+	      snake=new String[1];
 	      posicionX=m/2;
 	      posicionY=m/2;
 	      randomX=(int)(Math.random()*(m))-1;
@@ -70,10 +70,8 @@ public class main {
 	      jugar=true;
 	      
 	      while(jugar) {
-	    	  
-	    	  
-	    	  System.out.println(punteo+"         "+nombre);
-	      for(int i=0;i<m+2;i++) {
+	    	   System.out.println(punteo+"         "+nombre);
+	    	   for(int i=0;i<m+2;i++) {
 				System.out.println();
 				for(int j=0;j<m+2;j++) {	
 					if((i==0)||(j==0)||(i==m+1)||(j==m+1)) {
@@ -83,8 +81,8 @@ public class main {
 	          if((i==posicionY)&&(j==posicionX)){
 	          
 	        	for(int k=0;k<tInicial;k++) {
-	        		serpiente[k]=new snake(posicionX,posicionY);
-	        		System.out.print(serpiente[k].cola);
+	        		snake[k]="@";
+	        		System.out.print(snake[k]);
 	          	}
 	            
 	  }
@@ -93,7 +91,7 @@ public class main {
 	            	tablero[i][j]="*";
 	            }
 	            else{
-	              tablero[i][j]=" ";
+	            	tablero[i][j]=" ";
 	            }
 	          }
 	}
@@ -104,10 +102,7 @@ public class main {
 	      switch(movimiento=entrada.next()){
 	      	case"a":
 	      		posicionX=posicionX-1;
-        		if(tInicial>1) {
-        			for(int k=0;k<tInicial;k++)
-        			serpiente[k]=new snake(posicionX-1,posicionY);
-        		}
+        		
 	      		break;
 	      	case "d":
 	      		posicionX=posicionX+1;
@@ -115,8 +110,6 @@ public class main {
 	      	case "w":
 	      		posicionY=posicionY-1;
 	      		if(tInicial>1) {
-        			for(int k=0;k<tInicial;k++)
-        			serpiente[k]=new snake(posicionX-1,posicionY-1);
         		}
 	      		break;
 	      	case "s":
@@ -130,7 +123,7 @@ public class main {
 	     }
 	     if((posicionX==randomY)&&(posicionY==randomX)) {
 	    	  tInicial=tInicial+1;
-	    	  //snake=new String[tInicial];
+	    	  snake=new String[tInicial];
 	    	  randomX=(int)(Math.random()*(m))-1;
 		      randomY=(int)(Math.random()*(m))-1;
 		      
