@@ -5,7 +5,6 @@ public class main {
 	public static void main(String[] args) {	
 		Scanner entrada=new Scanner(System.in);
 	    
-	    int x,y;//largo y alto
 	    int m = 0;
 	    String nombre = null;//nombre de usuario
 	    int tInicial = 0;//tamanio inicial del snake
@@ -18,9 +17,12 @@ public class main {
 	    boolean jugar;
 	    String movimiento;
 	    int punteo=0;
+	    String fruto="*";
+	    
 	    String[] historial=new String[1];
 	    int[] historial2=new int[3];
-	   boolean menu=true;
+	   
+	    boolean menu=true;
 	   
 	    while(menu) {
 	    System.out.println("Elige una opcion");
@@ -63,8 +65,8 @@ public class main {
 	      snake=new String[1];
 	      posicionX=m/2;
 	      posicionY=m/2;
-	      randomX=(int)(Math.random()*(m))-1;
-	      randomY=(int)(Math.random()*(m))-1;
+	      randomX=(int)(Math.random()*(m));
+	      randomY=(int)(Math.random()*(m));
 	      tablero=new String[m+2][m+2];
 	      
 	      jugar=true;
@@ -88,7 +90,7 @@ public class main {
 	  }
 	          else{
 	            if((i==randomX)&&(j==randomY)){
-	            	tablero[i][j]="*";
+	            	tablero[i][j]=fruto;
 	            }
 	            else{
 	            	tablero[i][j]=" ";
@@ -124,11 +126,28 @@ public class main {
 	     if((posicionX==randomY)&&(posicionY==randomX)) {
 	    	  tInicial=tInicial+1;
 	    	  snake=new String[tInicial];
-	    	  randomX=(int)(Math.random()*(m))-1;
-		      randomY=(int)(Math.random()*(m))-1;
+	    	  randomX=(int)(Math.random()*(m));
+		      randomY=(int)(Math.random()*(m));
+		      tablero[randomX][randomY]=fruto;
+		    
+		     System.out.println("fruto "+"("+posicionX+", "+posicionY+")");
+		      if(posicionX>posicionY) {
+		    	  punteo=Math.abs(((m/2)-posicionY));
+		      }
+		      else {
+		    	  if(posicionY>posicionX) {
+		    		  punteo=Math.abs(((m/2)-posicionX));
+		    	  }
+		    	  else {
+		    		  if(posicionY==posicionX) {
+		    			  punteo=Math.abs(((m/2)-posicionX));
+		    		  }
+		    	  }
+		      }
+		      punteo=punteo+punteo;
 		      
 	      }
-	    
+	     
 	    }
 	      
 				break;
