@@ -13,6 +13,8 @@ public class main {
 	    String[] snake;
 	    int posicionX;
 	    int posicionY;
+	    int frutoX = 0;
+	    int frutoY = 0;
 	    int randomX,randomY;
 	    boolean jugar;
 	    String movimiento;
@@ -91,6 +93,8 @@ public class main {
 	          else{
 	            if((i==randomX)&&(j==randomY)){
 	            	tablero[i][j]=fruto;
+	            	frutoX=i;
+	            	frutoY=j;
 	            }
 	            else{
 	            	tablero[i][j]=" ";
@@ -131,16 +135,16 @@ public class main {
 		      tablero[randomX][randomY]=fruto;
 		    
 		     System.out.println("fruto "+"("+posicionX+", "+posicionY+")");
-		      if(posicionX>posicionY) {
-		    	  punteo=Math.abs(((m/2)-posicionY));
+		      if(frutoX>frutoY) {
+		    	  punteo=Math.abs(((m/2)-frutoY));
 		      }
 		      else {
-		    	  if(posicionY>posicionX) {
-		    		  punteo=Math.abs(((m/2)-posicionX));
+		    	  if(frutoX<frutoY) {
+		    		  punteo=Math.abs(((m/2)-frutoX));
 		    	  }
 		    	  else {
-		    		  if(posicionY==posicionX) {
-		    			  punteo=Math.abs(((m/2)-posicionX));
+		    		  if(frutoX==frutoY) {
+		    			  punteo=Math.abs(((m/2)-frutoX));
 		    		  }
 		    	  }
 		      }
